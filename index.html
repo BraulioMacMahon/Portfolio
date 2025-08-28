@@ -1,0 +1,913 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Braulio Mac-Mahon - Portfólio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #1e3a8a;
+      --secondary-color: #dc2626;
+      --light-gray: #f8f9fa;
+      --dark-gray: #6c757d;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, var(--primary-color), #2563eb);
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color), #2563eb);
+      color: white;
+      padding: 100px 0;
+    }
+
+    .section-title {
+      color: var(--primary-color);
+      font-weight: 700;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .category-badge {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .btn-outline-primary {
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 15px;
+      transition: color 0.3s;
+      opacity: 0.9;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+      opacity: 1;
+    }
+
+    .admin-panel {
+      background: var(--light-gray);
+      min-height: calc(100vh - 56px);
+    }
+
+    .project-form {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .table-actions button {
+      margin-right: 0.25rem;
+    }
+
+    .hero-image {
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 5px solid white;
+    }
+
+    .badge-tag {
+      background: #e9ecef;
+      color: #333;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 60px 0;
+      }
+
+      .hero-image {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#home">Portfólio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="showLogin()">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Portfolio Content -->
+  <div id="portfolio-content">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-center">
+      <div class="container">
+        <img id="hero-image"
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxZTNhOGEiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyNTYzZWIiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjEwMCIgZmlsbD0idXJsKCNncmFkKSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNzAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Qk08L3RleHQ+PC9zdmc+"
+          alt="Braulio Mac-Mahon" class="hero-image mb-4" />
+        <h1 class="display-4 fw-bold mb-2">Braulio Mac-Mahon</h1>
+        <p class="mb-2">Ciência da Computação | Design Gráfico | Audiovisual | Desenvolvimento Tecnológico
+        </p>
+        <p id="hero-mini-bio" class="lead mb-4"></p>
+        <div class="social-links">
+          <a href="#" id="linkedin-link" target="_blank" rel="noopener" title="LinkedIn"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="#" id="github-link" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" id="instagram-link" target="_blank" rel="noopener" title="Instagram"><i
+              class="fab fa-instagram"></i></a>
+          <a href="#" id="behance-link" target="_blank" rel="noopener" title="Behance"><i
+              class="fab fa-behance"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center">Sobre</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <p class="text-center lead">
+              Profissional multidisciplinar com sólida formação em Ciências da Computação e ampla experiência em design
+              gráfico, produção audiovisual e comunicação institucional. Especializado em conectar tecnologia e cultura
+              organizacional, com foco no impacto social e atenção aos detalhes.
+            </p>
+            <div class="row mt-5">
+              <div class="col-md-6">
+                <h5><i class="fas fa-code text-primary me-2"></i>Desenvolvimento</h5>
+                <p>Aplicações web/mobile e integração IoT</p>
+              </div>
+              <div class="col-md-6">
+                <h5><i class="fas fa-palette text-primary me-2"></i>Design</h5>
+                <p>Identidade visual e branding institucional</p>
+              </div>
+              <div class="col-md-6">
+                <h5><i class="fas fa-video text-primary me-2"></i>Audiovisual</h5>
+                <p>Produção, edição e operação de câmera</p>
+              </div>
+              <div class="col-md-6">
+                <h5><i class="fas fa-robot text-primary me-2"></i>IA</h5>
+                <p>Roteiros e protótipos com inteligência artificial</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Portfólio</h2>
+
+        <!-- Filter Buttons -->
+        <div id="filters-container" class="text-center mb-4">
+          <!-- Dynamic filters render here -->
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="row" id="projects-grid">
+          <!-- Projects will be dynamically loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-5">
+      <div class="container">
+        <h2 class="section-title text-center">Contato</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="text-center">
+              <p class="lead mb-4">Vamos trabalhar juntos no seu próximo projeto?</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <i class="fas fa-envelope text-primary fa-2x mb-3"></i>
+                  <p id="contact-email">braulio.macmahon@exemplo.com</p>
+                </div>
+                <div class="col-md-6">
+                  <i class="fas fa-phone text-primary fa-2x mb-3"></i>
+                  <p id="contact-phone">+244 900 000 000</p>
+                </div>
+              </div>
+              <div class="mt-4">
+                <i class="fas fa-map-marker-alt text-primary fa-2x mb-3"></i>
+                <p id="contact-location">Luanda, Angola</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Acesso Administrativo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="email" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="password" required />
+            </div>
+            <div class="alert alert-danger d-none" id="loginError"></div>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="admin-panel" class="d-none">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: var(--primary-color);">
+      <div class="container-fluid">
+        <span class="navbar-brand">Painel Administrativo</span>
+        <button class="btn btn-outline-light btn-sm" onclick="logout()">Sair</button>
+      </div>
+    </nav>
+
+    <div class="container-fluid admin-panel py-4">
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="projects-tab" data-bs-toggle="tab" data-bs-target="#projects"
+            type="button" role="tab">Projetos</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
+            role="tab">Configurações</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="adminTabsContent">
+        <!-- Projects Tab -->
+        <div class="tab-pane fade show active" id="projects" role="tabpanel">
+          <!-- Add Project Form -->
+          <div class="project-form">
+            <h4>Adicionar/Editar Projeto</h4>
+            <form id="projectForm">
+              <input type="hidden" id="editingProjectId" />
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="projectTitle" class="form-label">Título</label>
+                  <input type="text" class="form-control" id="projectTitle" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="projectCategory" class="form-label">Categoria</label>
+                  <select class="form-select" id="projectCategory" required></select>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="projectDescription" class="form-label">Descrição</label>
+                <textarea class="form-control" id="projectDescription" rows="3" required></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="projectImage" class="form-label">URL da Imagem</label>
+                  <input type="url" class="form-control" id="projectImage" placeholder="https://..." />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="projectLink" class="form-label">Link Externo</label>
+                  <input type="url" class="form-control" id="projectLink" placeholder="https://..." />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="projectTags" class="form-label">Tags (separadas por vírgula)</label>
+                <input type="text" class="form-control" id="projectTags" placeholder="#branding, #uiux" />
+              </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary me-2">Salvar Projeto</button>
+                <button type="button" class="btn btn-secondary" onclick="clearProjectForm()">Limpar</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Projects List -->
+          <div class="bg-white rounded p-3">
+            <h4>Projetos Cadastrados</h4>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Título</th>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="projectsTable"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="tab-pane fade" id="settings" role="tabpanel">
+          <div class="project-form">
+            <h4>Configurações de Perfil, Contato e Redes</h4>
+            <form id="settingsForm">
+              <h5>Perfil</h5>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="settingsProfileImage" class="form-label">Foto de Perfil (URL)</label>
+                  <input type="url" class="form-control" id="settingsProfileImage" placeholder="https://..." />
+                </div>
+                <div class="col-md-8 mb-3">
+                  <label for="settingsBio" class="form-label">Mini Bio</label>
+                  <textarea class="form-control" id="settingsBio" rows="2"
+                    placeholder="Frase curta sobre você"></textarea>
+                </div>
+              </div>
+
+              <h5 class="mt-3">Contato</h5>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="settingsEmail" class="form-label">E-mail</label>
+                  <input type="email" class="form-control" id="settingsEmail" />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="settingsPhone" class="form-label">Telefone</label>
+                  <input type="tel" class="form-control" id="settingsPhone" />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <label for="settingsLocation" class="form-label">Localização</label>
+                  <input type="text" class="form-control" id="settingsLocation" />
+                </div>
+              </div>
+
+              <h5 class="mt-3">Redes Sociais</h5>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="settingsLinkedin" class="form-label">LinkedIn</label>
+                  <input type="url" class="form-control" id="settingsLinkedin" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="settingsGithub" class="form-label">GitHub</label>
+                  <input type="url" class="form-control" id="settingsGithub" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="settingsInstagram" class="form-label">Instagram</label>
+                  <input type="url" class="form-control" id="settingsInstagram" />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="settingsBehance" class="form-label">Behance</label>
+                  <input type="url" class="form-control" id="settingsBehance" />
+                </div>
+              </div>
+
+              <h5 class="mt-3">Categorias</h5>
+              <div class="row align-items-end">
+                <div class="col-md-8 mb-3">
+                  <label for="newCategoryInput" class="form-label">Adicionar nova categoria</label>
+                  <input type="text" class="form-control" id="newCategoryInput"
+                    placeholder="Ex.: branding, audiovisual..." />
+                </div>
+                <div class="col-md-4 mb-3">
+                  <button type="button" class="btn btn-outline-primary w-100" id="addCategoryBtn">Adicionar
+                    Categoria</button>
+                </div>
+              </div>
+              <ul id="categoriesList" class="list-group mb-3"></ul>
+
+              <button type="submit" class="btn btn-primary">Salvar Configurações</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p>&copy; 2025 Braulio Mac-Mahon. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ---------------------------
+    // Persistência com localStorage
+    // ---------------------------
+    function saveData() {
+      localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
+    }
+    function loadData() {
+      const saved = localStorage.getItem('portfolioData');
+      if (saved) {
+        try { portfolioData = JSON.parse(saved); }
+        catch { /* ignore parse error, keep defaults */ }
+      }
+    }
+
+    // ---------------------------
+    // Dados padrão
+    // ---------------------------
+    let portfolioData = {
+      projects: [
+        {
+          id: 1,
+          title: "Identidade Visual Corporativa",
+          category: "branding",
+          description: "Desenvolvimento completo de identidade visual para empresa de tecnologia, incluindo logo, paleta de cores, tipografia e manual de marca.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFlM2E4YSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SWRlbnRpZGFkZSBWaXN1YWw8L3RleHQ+PC9zdmc+",
+          link: "#",
+          tags: "#branding, #identidade, #manual"
+        },
+        {
+          id: 2,
+          title: "Apresentação Estratégica Executiva",
+          category: "apresentacoes",
+          description: "Criação de apresentação institucional para diretoria, com foco em dados estratégicos e proposta visual impactante.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzI1NjNlYiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QXByZXNlbnTDoXrDo288L3RleHQ+PC9zdmc+",
+          link: "#",
+          tags: "#apresentações, #estratégia"
+        },
+        {
+          id: 3,
+          title: "Documentário Institucional",
+          category: "audiovisual",
+          description: "Produção completa de vídeo institucional, incluindo roteiro, direção, operação de câmera e pós-produção. Impacto de 50k+ visualizações.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2RjMjYyNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+RG9jdW1lbnTDoXJpbzwvdGV4dD48L3N2Zz4=",
+          link: "#",
+          tags: "#vídeo, #edição, #câmera"
+        },
+        {
+          id: 4,
+          title: "App Mobile com IoT",
+          category: "desenvolvimento",
+          description: "Desenvolvimento de aplicativo mobile integrado com dispositivos IoT para monitoramento ambiental em tempo real.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzA1OTE0YyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QXBwIElvVDwvdGV4dD48L3N2Zz4=",
+          link: "#",
+          tags: "#mobile, #IoT, #tempo-real"
+        },
+        {
+          id: 5,
+          title: "Roteiros Gerados com IA",
+          category: "ia",
+          description: "Desenvolvimento de sistema de geração automática de roteiros para conteúdo audiovisual usando inteligência artificial.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzc5MzNmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Um90ZWlyb3MgSUE8L3RleHQ+PC9zdmc+",
+          link: "#",
+          tags: "#IA, #roteiro, #automação"
+        }
+      ],
+      settings: {
+        email: "braulio.macmahon@exemplo.com",
+        phone: "+244 900 000 000",
+        location: "Luanda, Angola",
+        linkedin: "https://linkedin.com/in/braulio-macmahon",
+        github: "https://github.com/braulio-macmahon",
+        instagram: "https://instagram.com/braulio.macmahon",
+        behance: "https://behance.net/braulio-macmahon",
+        profileImage: "",
+        bio: "",
+        categories: ["branding", "apresentacoes", "audiovisual", "desenvolvimento", "ia"]
+      }
+    };
+
+    let currentUser = null;
+    const ADMIN_CREDENTIALS = { email: "brauliomacmahon@gmail.com", password: "palavrapasse" };
+
+    // ---------------------------
+    // Inicialização
+    // ---------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      loadData();
+      loadSettings();
+      loadProjects();
+      setupEventListeners();
+    });
+
+    function setupEventListeners() {
+      // Login
+      document.getElementById('loginForm').addEventListener('submit', handleLogin);
+      // Project form
+      document.getElementById('projectForm').addEventListener('submit', handleProjectSubmit);
+      // Settings form
+      document.getElementById('settingsForm').addEventListener('submit', handleSettingsSubmit);
+      // Add Category
+      document.getElementById('addCategoryBtn').addEventListener('click', handleAddCategory);
+    }
+
+    // ---------------------------
+    // Autenticação
+    // ---------------------------
+    function showLogin() {
+      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      loginModal.show();
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorDiv = document.getElementById('loginError');
+
+      if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
+        currentUser = { email };
+        document.getElementById('portfolio-content').classList.add('d-none');
+        document.getElementById('admin-panel').classList.remove('d-none');
+        const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+        loginModal.hide();
+        loadProjectsTable();
+        loadSettingsForm();
+        errorDiv.classList.add('d-none');
+      } else {
+        errorDiv.textContent = 'Credenciais inválidas';
+        errorDiv.classList.remove('d-none');
+      }
+    }
+
+    function logout() {
+      currentUser = null;
+      document.getElementById('portfolio-content').classList.remove('d-none');
+      document.getElementById('admin-panel').classList.add('d-none');
+      document.getElementById('loginForm').reset();
+    }
+
+    // ---------------------------
+    // UI Pública
+    // ---------------------------
+    function loadSettings() {
+      // Hero profile image
+      const imgEl = document.getElementById('hero-image');
+      if (portfolioData.settings.profileImage && portfolioData.settings.profileImage.trim() !== "") {
+        imgEl.src = portfolioData.settings.profileImage.trim();
+      }
+
+      // Mini bio
+      document.getElementById('hero-mini-bio').textContent = portfolioData.settings.bio || "";
+
+      // Social links
+      setHrefIfPresent('linkedin-link', portfolioData.settings.linkedin);
+      setHrefIfPresent('github-link', portfolioData.settings.github);
+      setHrefIfPresent('instagram-link', portfolioData.settings.instagram);
+      setHrefIfPresent('behance-link', portfolioData.settings.behance);
+
+      // Contacts
+      document.getElementById('contact-email').textContent = portfolioData.settings.email || "";
+      document.getElementById('contact-phone').textContent = portfolioData.settings.phone || "";
+      document.getElementById('contact-location').textContent = portfolioData.settings.location || "";
+
+      // Filters
+      renderFilters();
+    }
+
+    function setHrefIfPresent(id, url) {
+      const a = document.getElementById(id);
+      if (url && url.trim() !== "") {
+        a.href = url;
+      } else {
+        a.href = "#";
+      }
+    }
+
+    function renderFilters() {
+      const container = document.getElementById('filters-container');
+      container.innerHTML = "";
+      const allBtn = document.createElement('button');
+      allBtn.className = "btn btn-outline-primary me-2 filter-btn active";
+      allBtn.dataset.filter = "all";
+      allBtn.textContent = "Todos";
+      allBtn.addEventListener('click', onFilterClick);
+      container.appendChild(allBtn);
+
+      (portfolioData.settings.categories || []).forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = "btn btn-outline-primary me-2 filter-btn";
+        btn.dataset.filter = cat;
+        btn.textContent = formatCategoryLabel(cat);
+        btn.addEventListener('click', onFilterClick);
+        container.appendChild(btn);
+      });
+    }
+
+    function onFilterClick(e) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      filterProjects(e.currentTarget.dataset.filter);
+    }
+
+    function loadProjects(filter = 'all') {
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = "";
+
+      const list = portfolioData.projects.filter(p => filter === 'all' ? true : p.category === filter);
+
+      if (list.length === 0) {
+        grid.innerHTML = '<div class="col-12 text-center text-muted">Sem projetos nesta categoria no momento.</div>';
+        return;
+      }
+
+      list.forEach(project => {
+        const col = document.createElement('div');
+        col.className = "col-md-6 col-lg-4 mb-4";
+        col.innerHTML = `
+          <div class="card project-card h-100">
+            <img src="${project.image || 'https://via.placeholder.com/600x400?text=Projeto'}" class="card-img-top" alt="${escapeHtml(project.title)}" />
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">${escapeHtml(project.title)}</h5>
+                <span class="category-badge">${formatCategoryLabel(project.category)}</span>
+              </div>
+              <p class="card-text">${escapeHtml(project.description)}</p>
+              ${renderTags(project.tags)}
+              ${project.link ? `<a class="btn btn-sm btn-outline-primary mt-auto align-self-start" href="${project.link}" target="_blank" rel="noopener">Ver mais</a>` : ""}
+            </div>
+          </div>
+        `;
+        grid.appendChild(col);
+      });
+    }
+
+    function renderTags(tagsStr) {
+      if (!tagsStr) return "";
+      const tags = tagsStr.split(',').map(t => t.trim()).filter(Boolean);
+      if (!tags.length) return "";
+      const html = tags.map(t => `<span class="badge badge-tag me-1 mb-1">${escapeHtml(t)}</span>`).join('');
+      return `<div class="mt-2">${html}</div>`;
+    }
+
+    function filterProjects(filter) {
+      loadProjects(filter);
+    }
+
+    function formatCategoryLabel(key) {
+      // Map known keys to readable labels
+      const map = {
+        branding: "Branding",
+        apresentacoes: "Apresentações",
+        audiovisual: "Audiovisual",
+        desenvolvimento: "Desenvolvimento",
+        ia: "IA & Roteiros"
+      };
+      return map[key] || key.charAt(0).toUpperCase() + key.slice(1);
+    }
+
+    function escapeHtml(str) {
+      return ('' + str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // ---------------------------
+    // Admin - Projetos
+    // ---------------------------
+    function loadProjectsTable() {
+      const tbody = document.getElementById('projectsTable');
+      tbody.innerHTML = "";
+      portfolioData.projects.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${escapeHtml(p.title)}</td>
+          <td>${formatCategoryLabel(p.category)}</td>
+          <td class="text-truncate" style="max-width: 320px;">${escapeHtml(p.description)}</td>
+          <td class="table-actions">
+            <button class="btn btn-sm btn-outline-primary" onclick="editProject(${p.id})"><i class="fa fa-pen"></i></button>
+            <button class="btn btn-sm btn-outline-danger" onclick="deleteProject(${p.id})"><i class="fa fa-trash"></i></button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Atualiza select de categorias no form (garante sincronia)
+      renderCategorySelect();
+    }
+
+    function renderCategorySelect() {
+      const sel = document.getElementById('projectCategory');
+      sel.innerHTML = "";
+      (portfolioData.settings.categories || []).forEach(cat => {
+        const opt = document.createElement('option');
+        opt.value = cat;
+        opt.textContent = formatCategoryLabel(cat);
+        sel.appendChild(opt);
+      });
+    }
+
+    function clearProjectForm() {
+      document.getElementById('editingProjectId').value = "";
+      document.getElementById('projectTitle').value = "";
+      document.getElementById('projectCategory').selectedIndex = 0;
+      document.getElementById('projectDescription').value = "";
+      document.getElementById('projectImage').value = "";
+      document.getElementById('projectLink').value = "";
+      document.getElementById('projectTags').value = "";
+    }
+
+    function handleProjectSubmit(e) {
+      e.preventDefault();
+      const editingId = document.getElementById('editingProjectId').value;
+      const newProject = {
+        id: editingId ? parseInt(editingId, 10) : Date.now(),
+        title: document.getElementById('projectTitle').value.trim(),
+        category: document.getElementById('projectCategory').value.trim(),
+        description: document.getElementById('projectDescription').value.trim(),
+        image: document.getElementById('projectImage').value.trim(),
+        link: document.getElementById('projectLink').value.trim(),
+        tags: document.getElementById('projectTags').value.trim()
+      };
+
+      if (!newProject.title || !newProject.category || !newProject.description) {
+        alert('Preencha os campos obrigatórios.');
+        return;
+      }
+
+      if (editingId) {
+        const idx = portfolioData.projects.findIndex(p => p.id == editingId);
+        if (idx >= 0) portfolioData.projects[idx] = newProject;
+      } else {
+        portfolioData.projects.push(newProject);
+      }
+
+      saveData();
+      loadProjects();
+      loadProjectsTable();
+      clearProjectForm();
+      // Volta para a aba de lista (opcional)
+    }
+
+    function editProject(id) {
+      const p = portfolioData.projects.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('editingProjectId').value = p.id;
+      document.getElementById('projectTitle').value = p.title;
+      document.getElementById('projectCategory').value = p.category;
+      document.getElementById('projectDescription').value = p.description;
+      document.getElementById('projectImage').value = p.image || "";
+      document.getElementById('projectLink').value = p.link || "";
+      document.getElementById('projectTags').value = p.tags || "";
+
+      // Muda para a aba de Projetos (form)
+      const tabTrigger = document.querySelector('#projects-tab');
+      if (tabTrigger) new bootstrap.Tab(tabTrigger).show();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function deleteProject(id) {
+      if (!confirm('Tem certeza que deseja apagar este projeto?')) return;
+      portfolioData.projects = portfolioData.projects.filter(p => p.id !== id);
+      saveData();
+      loadProjects();
+      loadProjectsTable();
+    }
+
+    // ---------------------------
+    // Admin - Configurações
+    // ---------------------------
+    function loadSettingsForm() {
+      document.getElementById('settingsProfileImage').value = portfolioData.settings.profileImage || "";
+      document.getElementById('settingsBio').value = portfolioData.settings.bio || "";
+      document.getElementById('settingsEmail').value = portfolioData.settings.email || "";
+      document.getElementById('settingsPhone').value = portfolioData.settings.phone || "";
+      document.getElementById('settingsLocation').value = portfolioData.settings.location || "";
+      document.getElementById('settingsLinkedin').value = portfolioData.settings.linkedin || "";
+      document.getElementById('settingsGithub').value = portfolioData.settings.github || "";
+      document.getElementById('settingsInstagram').value = portfolioData.settings.instagram || "";
+      document.getElementById('settingsBehance').value = portfolioData.settings.behance || "";
+
+      renderCategoriesList();
+      renderCategorySelect();
+    }
+
+    function handleSettingsSubmit(e) {
+      e.preventDefault();
+      portfolioData.settings.profileImage = document.getElementById('settingsProfileImage').value.trim();
+      portfolioData.settings.bio = document.getElementById('settingsBio').value.trim();
+      portfolioData.settings.email = document.getElementById('settingsEmail').value.trim();
+      portfolioData.settings.phone = document.getElementById('settingsPhone').value.trim();
+      portfolioData.settings.location = document.getElementById('settingsLocation').value.trim();
+      portfolioData.settings.linkedin = document.getElementById('settingsLinkedin').value.trim();
+      portfolioData.settings.github = document.getElementById('settingsGithub').value.trim();
+      portfolioData.settings.instagram = document.getElementById('settingsInstagram').value.trim();
+      portfolioData.settings.behance = document.getElementById('settingsBehance').value.trim();
+
+      saveData();
+      loadSettings();
+      alert('Configurações salvas!');
+    }
+
+    function handleAddCategory() {
+      const input = document.getElementById('newCategoryInput');
+      const value = (input.value || "").trim();
+      if (!value) return;
+
+      const key = normalizeCategoryKey(value);
+      if (!portfolioData.settings.categories.includes(key)) {
+        portfolioData.settings.categories.push(key);
+        saveData();
+        renderCategoriesList();
+        renderCategorySelect();
+        renderFilters();
+      }
+      input.value = "";
+    }
+
+    function renderCategoriesList() {
+      const list = document.getElementById('categoriesList');
+      list.innerHTML = "";
+      (portfolioData.settings.categories || []).forEach((cat, idx) => {
+        const li = document.createElement('li');
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+        li.innerHTML = `
+          <span>${formatCategoryLabel(cat)} <small class="text-muted">(${cat})</small></span>
+          <button class="btn btn-sm btn-outline-danger" onclick="removeCategory(${idx})"><i class="fa fa-times"></i></button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    function removeCategory(index) {
+      const cat = portfolioData.settings.categories[index];
+      // Impede remoção se houver projetos usando a categoria
+      const inUse = portfolioData.projects.some(p => p.category === cat);
+      if (inUse) {
+        alert('Não é possível remover uma categoria que está em uso por um ou mais projetos.');
+        return;
+      }
+      portfolioData.settings.categories.splice(index, 1);
+      saveData();
+      renderCategoriesList();
+      renderCategorySelect();
+      renderFilters();
+    }
+
+    function normalizeCategoryKey(label) {
+      return label
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove acentos
+        .replace(/[^a-z0-9]+/g, '') // remove não alfanuméricos
+        || 'categoria';
+    }
+
+    // ---------------------------
+    // Util
+    // ---------------------------
+    // Re-render após alterar categorias/projetos
+    const originalLoadProjects = loadProjects;
+
+    // ---------------------------
+    // Inicial render
+    // ---------------------------
+    // After settings are loaded, ensure filters and project grid are in sync
+    // (Already called in DOMContentLoaded)
+
+  </script>
+</body>
+
+</html>
+```
