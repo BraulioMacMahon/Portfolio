@@ -507,7 +507,8 @@
         }
       } catch (error) {
         console.error("Error loading data from Firestore:", error);
-        alert("Erro ao carregar dados do servidor. Verifique sua conexão ou as regras do Firebase.");
+        // Removido o alert para não interromper a experiência do usuário na carga inicial
+        // alert("Erro ao carregar dados do servidor. Verifique sua conexão ou as regras do Firebase.");
       }
     }
 
@@ -574,7 +575,8 @@
     // ---------------------------
     // Authentication
     // ---------------------------
-    function showLogin() {
+    // A função showLogin precisa ser globalmente acessível para o onclick no HTML
+    window.showLogin = function() { // Adicionado 'window.' aqui
       console.log("showLogin() foi chamada!");
       const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
       loginModal.show();
@@ -601,7 +603,7 @@
       }
     }
 
-    function logout() {
+    window.logout = function() { // Adicionado 'window.' aqui
       currentUser = null;
       document.getElementById('portfolio-content').classList.remove('d-none');
       document.getElementById('admin-panel').classList.add('d-none');
@@ -769,7 +771,7 @@
       });
     }
 
-    function clearProjectForm() {
+    window.clearProjectForm = function() { // Adicionado 'window.' aqui
       document.getElementById('editingProjectId').value = "";
       document.getElementById('projectTitle').value = "";
       document.getElementById('projectCategory').selectedIndex = 0;
@@ -809,7 +811,7 @@
       }
     }
 
-    function editProject(id) {
+    window.editProject = function(id) { // Adicionado 'window.' aqui
       const p = portfolioData.projects.find(x => x.id === id);
       if (!p) return;
       document.getElementById('editingProjectId').value = p.id;
@@ -826,7 +828,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    async function deleteProject(id) {
+    window.deleteProject = async function(id) { // Adicionado 'window.' aqui
       if (!confirm('Tem certeza que deseja apagar este projeto?')) return;
       const success = await deleteProjectFromFirestore(id);
       if (success) {
@@ -909,7 +911,7 @@
       });
     }
 
-    async function removeCategory(index) {
+    window.removeCategory = async function(index) { // Adicionado 'window.' aqui
       const cat = portfolioData.settings.categories[index];
       // Prevent removal if there are projects using the category
       const inUse = portfolioData.projects.some(p => p.category === cat);
