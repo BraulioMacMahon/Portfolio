@@ -1,3 +1,6 @@
+
+<br><br>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -437,40 +440,72 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  <script type="module">
+  <script>
     // ---------------------------
-    // Firebase Initialization
+    // Persistência com localStorage
     // ---------------------------
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getFirestore, collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
-
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyChjwL5wz2sjYJyPCu9jIUs6zskktaB9dM",
-      authDomain: "portfoliofirebase-c7c2d.firebaseapp.com",
-      projectId: "portfoliofirebase-c7c2d",
-      storageBucket: "portfoliofirebase-c7c2d.firebasestorage.app",
-      messagingSenderId: "1009377312778",
-      appId: "1:1009377312778:web:69eca37475ab701bd05ff3",
-      measurementId: "G-GSFX046P0V"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getFirestore(app);
-
-    // Firestore Collections References
-    const projectsCol = collection(db, "projects");
-    const settingsCol = collection(db, "settings");
-    const settingsDocRef = doc(db, "settings", "appSettings"); // Using a fixed ID for settings
+    function saveData() {
+      localStorage.setItem('portfolioData', JSON.stringify(portfolioData));
+    }
+    function loadData() {
+      const saved = localStorage.getItem('portfolioData');
+      if (saved) {
+        try { portfolioData = JSON.parse(saved); }
+        catch { /* ignore parse error, keep defaults */ }
+      }
+    }
 
     // ---------------------------
-    // Data Structure (will be loaded from Firestore)
+    // Dados padrão
     // ---------------------------
     let portfolioData = {
-      projects: [],
+      projects: [
+        {
+          id: 1,
+          title: "Identidade Visual Corporativa",
+          category: "branding",
+          description: "Desenvolvimento completo de identidade visual para empresa de tecnologia, incluindo logo, paleta de cores, tipografia e manual de marca.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFlM2E4YSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SWRlbnRpZGFkZSBWaXN1YWw8L3RleHQ+PC9zdmc+",
+          link: "#",
+          tags: "#branding, #identidade, #manual"
+        },
+        {
+          id: 2,
+          title: "Apresentação Estratégica Executiva",
+          category: "apresentacoes",
+          description: "Criação de apresentação institucional para diretoria, com foco em dados estratégicos e proposta visual impactante.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzI1NjNlYiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QXByZXNlbnTDoXrDo288L3RleHQ+PC9zdmc+",
+          link: "#",
+          tags: "#apresentações, #estratégia"
+        },
+        {
+          id: 3,
+          title: "Documentário Institucional",
+          category: "audiovisual",
+          description: "Produção completa de vídeo institucional, incluindo roteiro, direção, operação de câmera e pós-produção. Impacto de 50k+ visualizações.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2RjMjYyNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+RG9jdW1lbnTDoXJpbzwvdGV4dD48L3N2Zz4=",
+          link: "#",
+          tags: "#vídeo, #edição, #câmera"
+        },
+        {
+          id: 4,
+          title: "App Mobile com IoT",
+          category: "desenvolvimento",
+          description: "Desenvolvimento de aplicativo mobile integrado com dispositivos IoT para monitoramento ambiental em tempo real.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzA1OTE0YyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+QXBwIElvVDwvdGV4dD48L3N2Zz4=",
+          link: "#",
+          tags: "#mobile, #IoT, #tempo-real"
+        },
+        {
+          id: 5,
+          title: "Roteiros Gerados com IA",
+          category: "ia",
+          description: "Desenvolvimento de sistema de geração automática de roteiros para conteúdo audiovisual usando inteligência artificial.",
+          image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzc5MzNmZiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+Um90ZWlyb3MgSUE8L3RleHQ+PC9zdmc+",
+          link: "#",
+          tags: "#IA, #roteiro, #automação"
+        }
+      ],
       settings: {
         email: "braulio.macmahon@exemplo.com",
         phone: "+244 900 000 000",
@@ -489,72 +524,10 @@
     const ADMIN_CREDENTIALS = { email: "brauliomacmahon@gmail.com", password: "palavrapasse" };
 
     // ---------------------------
-    // Persistence with Firebase Firestore
+    // Inicialização
     // ---------------------------
-    async function loadDataFromFirestore() {
-      try {
-        // Load Projects
-        const projectsSnapshot = await getDocs(projectsCol);
-        portfolioData.projects = projectsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-        // Load Settings
-        const settingsSnapshot = await getDoc(settingsDocRef);
-        if (settingsSnapshot.exists()) {
-          portfolioData.settings = { ...portfolioData.settings, ...settingsSnapshot.data() };
-        } else {
-          // If settings don't exist, create them with default values
-          await setDoc(settingsDocRef, portfolioData.settings);
-        }
-      } catch (error) {
-        console.error("Error loading data from Firestore:", error);
-        alert("Erro ao carregar dados do servidor. Verifique sua conexão ou as regras do Firebase.");
-      }
-    }
-
-    async function saveProjectToFirestore(project) {
-      try {
-        if (project.id && typeof project.id === 'string') { // Existing project (has Firestore ID)
-          const projectDocRef = doc(db, "projects", project.id);
-          await updateDoc(projectDocRef, project);
-        } else { // New project
-          const newProjectRef = await addDoc(projectsCol, project);
-          project.id = newProjectRef.id; // Assign the new Firestore ID
-        }
-        return true;
-      } catch (error) {
-        console.error("Error saving project to Firestore:", error);
-        alert("Erro ao salvar projeto. Tente novamente.");
-        return false;
-      }
-    }
-
-    async function deleteProjectFromFirestore(id) {
-      try {
-        await deleteDoc(doc(db, "projects", id));
-        return true;
-      } catch (error) {
-        console.error("Error deleting project from Firestore:", error);
-        alert("Erro ao deletar projeto. Tente novamente.");
-        return false;
-      }
-    }
-
-    async function saveSettingsToFirestore(settings) {
-      try {
-        await setDoc(settingsDocRef, settings);
-        return true;
-      } catch (error) {
-        console.error("Error saving settings to Firestore:", error);
-        alert("Erro ao salvar configurações. Tente novamente.");
-        return false;
-      }
-    }
-
-    // ---------------------------
-    // Initialization
-    // ---------------------------
-    document.addEventListener('DOMContentLoaded', async () => {
-      await loadDataFromFirestore(); // Load data first
+    document.addEventListener('DOMContentLoaded', () => {
+      loadData();
       loadSettings();
       loadProjects();
       setupEventListeners();
@@ -572,7 +545,7 @@
     }
 
     // ---------------------------
-    // Authentication
+    // Autenticação
     // ---------------------------
     function showLogin() {
       const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
@@ -608,7 +581,7 @@
     }
 
     // ---------------------------
-    // Public UI
+    // UI Pública
     // ---------------------------
     function loadSettings() {
       // Hero profile image
@@ -734,7 +707,7 @@
     }
 
     // ---------------------------
-    // Admin - Projects
+    // Admin - Projetos
     // ---------------------------
     function loadProjectsTable() {
       const tbody = document.getElementById('projectsTable');
@@ -746,14 +719,14 @@
           <td>${formatCategoryLabel(p.category)}</td>
           <td class="text-truncate" style="max-width: 320px;">${escapeHtml(p.description)}</td>
           <td class="table-actions">
-            <button class="btn btn-sm btn-outline-primary" onclick="editProject('${p.id}')"><i class="fa fa-pen"></i></button>
-            <button class="btn btn-sm btn-outline-danger" onclick="deleteProject('${p.id}')"><i class="fa fa-trash"></i></button>
+            <button class="btn btn-sm btn-outline-primary" onclick="editProject(${p.id})"><i class="fa fa-pen"></i></button>
+            <button class="btn btn-sm btn-outline-danger" onclick="deleteProject(${p.id})"><i class="fa fa-trash"></i></button>
           </td>
         `;
         tbody.appendChild(tr);
       });
 
-      // Update category select in the form
+      // Atualiza select de categorias no form (garante sincronia)
       renderCategorySelect();
     }
 
@@ -778,10 +751,11 @@
       document.getElementById('projectTags').value = "";
     }
 
-    async function handleProjectSubmit(e) {
+    function handleProjectSubmit(e) {
       e.preventDefault();
       const editingId = document.getElementById('editingProjectId').value;
       const newProject = {
+        id: editingId ? parseInt(editingId, 10) : Date.now(),
         title: document.getElementById('projectTitle').value.trim(),
         category: document.getElementById('projectCategory').value.trim(),
         description: document.getElementById('projectDescription').value.trim(),
@@ -796,16 +770,17 @@
       }
 
       if (editingId) {
-        newProject.id = editingId; // Add ID for update
+        const idx = portfolioData.projects.findIndex(p => p.id == editingId);
+        if (idx >= 0) portfolioData.projects[idx] = newProject;
+      } else {
+        portfolioData.projects.push(newProject);
       }
 
-      const success = await saveProjectToFirestore(newProject);
-      if (success) {
-        await loadDataFromFirestore(); // Reload all data after save
-        loadProjects();
-        loadProjectsTable();
-        clearProjectForm();
-      }
+      saveData();
+      loadProjects();
+      loadProjectsTable();
+      clearProjectForm();
+      // Volta para a aba de lista (opcional)
     }
 
     function editProject(id) {
@@ -819,24 +794,22 @@
       document.getElementById('projectLink').value = p.link || "";
       document.getElementById('projectTags').value = p.tags || "";
 
-      // Switch to Projects tab (form)
+      // Muda para a aba de Projetos (form)
       const tabTrigger = document.querySelector('#projects-tab');
       if (tabTrigger) new bootstrap.Tab(tabTrigger).show();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    async function deleteProject(id) {
+    function deleteProject(id) {
       if (!confirm('Tem certeza que deseja apagar este projeto?')) return;
-      const success = await deleteProjectFromFirestore(id);
-      if (success) {
-        await loadDataFromFirestore(); // Reload all data after delete
-        loadProjects();
-        loadProjectsTable();
-      }
+      portfolioData.projects = portfolioData.projects.filter(p => p.id !== id);
+      saveData();
+      loadProjects();
+      loadProjectsTable();
     }
 
     // ---------------------------
-    // Admin - Settings
+    // Admin - Configurações
     // ---------------------------
     function loadSettingsForm() {
       document.getElementById('settingsProfileImage').value = portfolioData.settings.profileImage || "";
@@ -853,30 +826,24 @@
       renderCategorySelect();
     }
 
-    async function handleSettingsSubmit(e) {
+    function handleSettingsSubmit(e) {
       e.preventDefault();
-      const updatedSettings = {
-        profileImage: document.getElementById('settingsProfileImage').value.trim(),
-        bio: document.getElementById('settingsBio').value.trim(),
-        email: document.getElementById('settingsEmail').value.trim(),
-        phone: document.getElementById('settingsPhone').value.trim(),
-        location: document.getElementById('settingsLocation').value.trim(),
-        linkedin: document.getElementById('settingsLinkedin').value.trim(),
-        github: document.getElementById('settingsGithub').value.trim(),
-        instagram: document.getElementById('settingsInstagram').value.trim(),
-        behance: document.getElementById('settingsBehance').value.trim(),
-        categories: portfolioData.settings.categories // Keep categories as they are managed separately
-      };
+      portfolioData.settings.profileImage = document.getElementById('settingsProfileImage').value.trim();
+      portfolioData.settings.bio = document.getElementById('settingsBio').value.trim();
+      portfolioData.settings.email = document.getElementById('settingsEmail').value.trim();
+      portfolioData.settings.phone = document.getElementById('settingsPhone').value.trim();
+      portfolioData.settings.location = document.getElementById('settingsLocation').value.trim();
+      portfolioData.settings.linkedin = document.getElementById('settingsLinkedin').value.trim();
+      portfolioData.settings.github = document.getElementById('settingsGithub').value.trim();
+      portfolioData.settings.instagram = document.getElementById('settingsInstagram').value.trim();
+      portfolioData.settings.behance = document.getElementById('settingsBehance').value.trim();
 
-      const success = await saveSettingsToFirestore(updatedSettings);
-      if (success) {
-        await loadDataFromFirestore(); // Reload all data after save
-        loadSettings();
-        alert('Configurações salvas!');
-      }
+      saveData();
+      loadSettings();
+      alert('Configurações salvas!');
     }
 
-    async function handleAddCategory() {
+    function handleAddCategory() {
       const input = document.getElementById('newCategoryInput');
       const value = (input.value || "").trim();
       if (!value) return;
@@ -884,12 +851,10 @@
       const key = normalizeCategoryKey(value);
       if (!portfolioData.settings.categories.includes(key)) {
         portfolioData.settings.categories.push(key);
-        const success = await saveSettingsToFirestore(portfolioData.settings);
-        if (success) {
-          renderCategoriesList();
-          renderCategorySelect();
-          renderFilters();
-        }
+        saveData();
+        renderCategoriesList();
+        renderCategorySelect();
+        renderFilters();
       }
       input.value = "";
     }
@@ -908,35 +873,40 @@
       });
     }
 
-    async function removeCategory(index) {
+    function removeCategory(index) {
       const cat = portfolioData.settings.categories[index];
-      // Prevent removal if there are projects using the category
+      // Impede remoção se houver projetos usando a categoria
       const inUse = portfolioData.projects.some(p => p.category === cat);
       if (inUse) {
         alert('Não é possível remover uma categoria que está em uso por um ou mais projetos.');
         return;
       }
       portfolioData.settings.categories.splice(index, 1);
-      const success = await saveSettingsToFirestore(portfolioData.settings);
-      if (success) {
-        renderCategoriesList();
-        renderCategorySelect();
-        renderFilters();
-      }
+      saveData();
+      renderCategoriesList();
+      renderCategorySelect();
+      renderFilters();
     }
 
     function normalizeCategoryKey(label) {
       return label
         .toLowerCase()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove accents
-        .replace(/[^a-z0-9]+/g, '') // remove non-alphanumeric
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // remove acentos
+        .replace(/[^a-z0-9]+/g, '') // remove não alfanuméricos
         || 'categoria';
     }
 
     // ---------------------------
-    // Utility
+    // Util
     // ---------------------------
-    // (No changes needed here, as they are helper functions)
+    // Re-render após alterar categorias/projetos
+    const originalLoadProjects = loadProjects;
+
+    // ---------------------------
+    // Inicial render
+    // ---------------------------
+    // After settings are loaded, ensure filters and project grid are in sync
+    // (Already called in DOMContentLoaded)
 
   </script>
 </body>
